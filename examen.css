@@ -1,0 +1,226 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #003087 100%);
+  min-height: 100vh;
+  color: #eee;
+  padding: 20px;
+}
+
+/* ==================== HEADER ==================== */
+header {
+  text-align: center;
+  padding: 30px 20px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  margin-bottom: 40px;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.logo {
+  height: 70px;
+  filter: drop-shadow(0 0 15px gold);
+}
+
+header h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    background: linear-gradient(90deg, #f6f6f6 0%, #ffd700 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 4px 25px rgba(255, 215, 0, 0.4);
+}
+
+header p {
+  color: #ffd700;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+/* ==================== CARDS ==================== */
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 30px;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.95);
+  color: #111;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-20px) rotateX(8deg) rotateY(12deg) scale(1.06);
+  box-shadow: 0 30px 60px rgba(255, 215, 0, 0.25);
+}
+
+/* Pseudo-elemento overlay */
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(transparent, rgba(0, 48, 135, 0.6));
+  opacity: 0;
+  transition: opacity 0.4s;
+  z-index: 1;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+/* Imágenes (cambia el link según el jugador) */
+.card-image {
+  height: 240px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  transition: transform 0.7s ease;
+}
+
+.card:hover .card-image {
+  transform: scale(1.15);
+}
+
+/* Imagen Vinicius */
+.card:nth-child(1) .card-image {
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), 
+                    url('https://imagenes.primicias.ec/files/og_thumbnail/uploads/2024/06/24/66798e9c3a872.jpeg');
+}
+
+/* Imagen Bellingham */
+.card:nth-child(2) .card-image {
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), 
+                    url('https://cdn-media.theathletic.com/cdn-cgi/image/width=1200,height=900,fit=cover/vbIi6wXLSBkl_ZC7HYeH4fTka_1440x960.jpg');
+}
+
+/* Imagen Mbappé */
+.card:nth-child(3) .card-image {
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), 
+                    url('https://ca-times.brightspotcdn.com/dims4/default/0157bcb/2147483647/strip/true/crop/5264x3509+0+0/resize/1200x800!/quality/75/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2F1c%2F0d%2Fa2f0d37944b18b66fe9f8604e832%2F99f32e07b8334dc0bfbd24acffa50c68.jpg');
+}
+
+.badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #ffd700;
+  color: #111;
+  padding: 8px 18px;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 0.95rem;
+  box-shadow: 0 5px 15px rgba(255, 215, 0, 0.5);
+  z-index: 2;
+}
+
+/* Contenido */
+.card-content {
+  padding: 28px;
+  position: relative;
+  z-index: 2;
+}
+
+.card-content h3 {
+  font-size: 1.65rem;
+  margin-bottom: 10px;
+  color: #003087;
+  transition: all 0.3s;
+}
+
+.card:hover .card-content h3 {
+  color: #ffd700;
+  transform: translateX(8px);
+}
+
+.card-content p {
+  color: #444;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+/* Botón */
+.btn {
+  padding: 14px 32px;
+  background: #003087;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.4s;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -100%;
+  width: 40%;
+  height: 200%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  transition: 0.7s;
+}
+
+.btn:hover::after {
+  left: 200%;
+}
+
+.btn:hover {
+  background: #ffd700;
+  color: #111;
+  transform: translateY(-4px) scale(1.08);
+}
+
+/* ==================== FOOTER ==================== */
+footer {
+  text-align: center;
+  margin-top: 70px;
+  color: rgba(255, 255, 255, 0.7);
+  padding: 25px;
+  font-size: 1.1rem;
+}
+
+/* ==================== ANIMACIÓN DE ENTRADA ==================== */
+.card {
+  animation: cardPop 0.8s ease backwards;
+}
+
+.card:nth-child(1) { animation-delay: 0.1s; }
+.card:nth-child(2) { animation-delay: 0.3s; }
+.card:nth-child(3) { animation-delay: 0.5s; }
+
+@keyframes cardPop {
+  from {
+    opacity: 0;
+    transform: translateY(80px) scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
